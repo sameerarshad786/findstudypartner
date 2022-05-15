@@ -1,0 +1,11 @@
+{% extends 'cmd1/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'cmd1/navbar.html' %}
+    {% if searched %}
+        <h1>You search for...</h1>
+    {% else %}
+        <h1>Not found</h1>
+    {% endif %}
+{% endblock %}

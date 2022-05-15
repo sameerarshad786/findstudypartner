@@ -1,0 +1,45 @@
+{% extends 'cmd1/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'cmd1/navbar.html' %}
+  <main class="create-room layout">
+    <div class="container">
+      {% include 'cmd1/topics_component.html' %}
+      <div class="layout__box">
+        <div class="layout__boxHeader">
+          <div class="layout__boxTitle">
+            <a href="{{request.META.HTTP_REFERER}}">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path
+                  d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"
+                ></path>
+              </svg>
+            </a>
+            <h3>Browse Topics</h3>
+          </div>
+        </div>
+
+        <div class="topics-page layout__body">
+          {% include 'cmd1/search_bar.html' %}
+          <h1>All data is dummy if you can tap on any topic it will redirect you to home page</h1>
+          <ul class="topics__list">
+            <li>
+              <a href="{% url 'home' %}" class="active">All <span>{{topics.count}}</span></a>
+            </li>
+            {% for room in rooms %}
+              <li>
+                <a href="{% url 'home' %}">{{ room.topics }}<span>553</span></a>
+              </li>
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+      {% include 'cmd1/activity_component.html' %}
+    </div>
+  </main>
+
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
