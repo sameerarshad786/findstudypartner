@@ -66,3 +66,9 @@ def topics(request):
         'title': 'Topics',
     }
     return render(request, 'cmd1/topics.html', context)
+
+def activity(request):
+    context = {
+        'title': 'Topics',
+    }
+    return render(request, 'cmd1/activity.html', context)

@@ -9,4 +9,5 @@ urlpatterns = [
     path('room/<int:pk>/update/', RoomUpdateView.as_view(), name='room-update'),
     path('room/<int:pk>/delete/?next=/your_profile/', RoomDeleteView.as_view(), name='room-delete'),
     path('topics/', views.topics, name='topics'),
+    path('activity/', views.activity, name='activity'),
 ]
