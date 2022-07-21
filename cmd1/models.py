@@ -54,21 +54,3 @@ class Room(models.Model):
 
     def get_absolute_url(self):
         return reverse('room', kwargs={'pk': self.pk})
-
-    @property
-    def calculate_time(self) -> str:
-        current_date = datetime.now(timezone.utc)
-        _cal = current_date - self.date_posted
-        if _cal <= timedelta(seconds=10):
-            return "Just Now"
-        elif _cal <= timedelta(minutes=59):
-            minutes = int(_cal.seconds/59)
-            return f"{minutes} min"
-        elif _cal <= timedelta(hours=3599):
-            hours = int(_cal.seconds/3599)
-            return f"{hours} hr"
-        elif _cal <= timedelta(days=1):
-            days = int(_cal.seconds/86376)
-            return f"{days} day ago"
-        else:
-            return self.date_posted.strftime("%F %d, %Y")
