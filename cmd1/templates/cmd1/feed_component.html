@@ -8,7 +8,7 @@
                 <span>@{{ room.host }}</span>
             </a>
             <div class="roomListRoom__actions">
-                <span>{{ room.calculate_time }}</span>
+                <span>{{ room.date_posted | timesince }}</span>
                 <!-- <span>{{ room.date_posted|date:'F d, Y' }}</span> -->
             </div>
         </div>
