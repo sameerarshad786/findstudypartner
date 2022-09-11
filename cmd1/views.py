@@ -14,7 +14,7 @@ class RoomListView(ListView):
     template_name = 'cmd1/home.html'
     model = Room
     context_object_name = 'rooms'
-    ordering = '-date_posted'
+    ordering = '-created_at'
     paginate_by = 5
 
 class RoomDetailView(DetailView):

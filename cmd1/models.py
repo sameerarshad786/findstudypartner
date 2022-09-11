@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-from datetime import datetime, timedelta
-from django.utils import timezone
+from django.utils import timesince
 
 class Room(models.Model):
     host = models.ForeignKey(
@@ -45,8 +44,11 @@ class Room(models.Model):
 
     about = models.TextField()
 
-    date_posted = models.DateTimeField(
-        default=timezone.now
+    created_at = models.DateTimeField(
+        auto_now=True
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True
     )
 
     def __str__(self):
@@ -54,3 +56,7 @@ class Room(models.Model):
 
     def get_absolute_url(self):
         return reverse('room', kwargs={'pk': self.pk})
+
+    def room_created(self):
+        actual_time = str(timesince.timesince(self.created_at))
+        return actual_time.split(", ")[0]

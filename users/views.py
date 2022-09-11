@@ -21,7 +21,7 @@ def register(request):
 @login_required
 def userprofile(request, pk):
     user = get_object_or_404(User, id=pk)
-    rooms = user.room_set.all().order_by('-date_posted')
+    rooms = user.room_set.all().order_by('-created_at')
     
     context = {
         'user': user,
@@ -52,4 +52,4 @@ def editprofile(request, pk):
         'b_form': b_form,
         'title': 'Edit Profile',
     }
-    return render(request, 'users/editprofile.html', context)
+    return render(request, 'users/settings.html', context)
